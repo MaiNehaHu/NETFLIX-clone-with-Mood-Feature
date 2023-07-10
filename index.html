@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--font-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!--google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <!--another font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix in Vanilla JS</title>
+
+    <link rel="icon" type="image" href="/icon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <!--nav bar-->
+    <nav>
+      <div class="nav-bar">
+        <ul class="nav-buttons">
+          <li>
+            <img
+              src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+              alt="NETFLIX"
+              id="logo"
+            />
+          </li>
+          <li><button class="active">Home</button></li>
+          <li><button>TV Shows</button></li>
+          <li><button>Movies</button></li>
+          <li><button>New & Popular</button></li>
+          <li><button>My List</button></li>
+          <li><button>Browse by Languages</button></li>
+        </ul>
+        <ul class="other-buttons">
+          <li><i class="fa fa-search"></i></li>
+          <li><i class="fa fa-bell"></i></li>
+          <li>
+            <img
+              src="https://cdn.openart.ai/uploads/image_1677397282492_1024.jpg"
+              alt="User"
+              id="user-photo"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!--banner-->
+    <section class="banner" id="banner-section">
+      <!--js-->
+    </section>
+    <!--movies section-->
+    <section class="movies-container" id="movie-cont">
+      <!--js-->
+    </section>
+
+    <!--🌈🪄🥰-->
+    <div class="mood" style="display: none">
+      <h2>Select your mood</h2>
+      <ul class="my-feature">
+        <li><option class="happy">😁</option></li>
+        <li><option class="romance">🥰</option></li>
+        <li><option class="sad">😢</option></li>
+        <li><option class="action">🤯</option></li>
+        <li><option class="horror">👻</option></li>
+        <li><option class="family">👨‍👩‍👧‍👦</option></li>
+      </ul>
+      <div class="remove">&Cross;</div>
+    </div>
+
+    <!--Result popup after selecting mood options-->
+    <div class="mood-result">
+      <div class="mood-result-container">
+        <!--js-->
+      </div>
+      <div class="remove-mood-result">&Cross;</div>
+    </div>
+
+    <!--loaders of banner and movies-->
+    <div class="loader"></div>
+    <div class="loading-movies">
+      <h1>Loading movies to show you. Please Wait...</h1>
+    </div>
+
+    <!--internet status-->
+    <div class="internet-status">
+      <div class="offline">
+        <h2>Offoo!! You are offline.</h2>
+        <img src="./no-wifi.png" alt="No-wifi" class="offline-wifi" />
+      </div>
+      <div class="online">
+        <h2>Yaayy!! You are Online</h2>
+        <i class="fa fa-wifi online-wifi"></i>
+      </div>
+    </div>
+  </body>
+</html>
