@@ -286,15 +286,6 @@
   }
   
   /*header group with category name*/
-  hgroup > .explore-nudge {
-    display: none;
-    color: rgb(0, 208, 255);
-    cursor: pointer;
-  }
-  hgroup:hover .explore-nudge {
-    display: inline;
-  }
-  
   hgroup > h2 {
     padding: 1rem;
     cursor: pointer;
@@ -326,9 +317,6 @@
   @media screen and (max-width: 420px) {
     .movie-section > hgroup > h2 {
       font-size: small;
-    }
-    hgroup > .explore-nudge {
-      font-size: smaller;
     }
     .movies-rows {
       height: 140px;

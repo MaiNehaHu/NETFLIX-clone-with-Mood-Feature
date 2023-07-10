@@ -272,7 +272,6 @@ function buildMoviesHtml(list, categoryName) {
     //Making all movies sections
     ` <hgroup>
       <h2>${categoryName}</h2>
-      <span class="explore-nudge">Explore All</span>
     </hgroup>
     <div class="movies-rows scrollerBox snaps-inline">
       ${movieListHTML}
