@@ -428,7 +428,7 @@ function filterHorror() {
         let flag =
           movieName.name == "Horror" ||
           movieName.name == "Mystry" ||
-          movieName.name == "Crime";
+          movieName.name == "Thriller";
 
         return flag;
       });
