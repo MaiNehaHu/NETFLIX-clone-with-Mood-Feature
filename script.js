@@ -285,22 +285,29 @@ function buildMoviesHtml(list, categoryName) {
 function buildMoodMoviesHTML(list, moodName) {
   const randomMovie_fromList = list[randomNumber(0, list.length - 1)];
 
-  const movieListHTML = `
+  if (!randomMovie_fromList.backdrop_path) {
+    console.log(
+      `${randomMovie_fromList.title} of ${moodName} Banner Doesn't exist`
+    );
+    return;
+  } else {
+    const movieListHTML = `
     <img
       class="movie"
       src="${imgPath}${randomMovie_fromList.backdrop_path}"
       alt="${randomMovie_fromList.title}"
     /> 
     `;
-  //Building one section of one category
+    //Building one section of one category
 
-  const moodMovieHTML =
-    //Making movies sections
-    `<div class="mood-result-details">
+    const moodMovieHTML =
+      //Making movies sections
+      `<div class="mood-result-details">
       ${movieListHTML}
       <h3>${randomMovie_fromList.title}</h3>
     </div>`;
-  return moodMovieHTML;
+    return moodMovieHTML;
+  }
 }
 
 function animateDown(image) {
