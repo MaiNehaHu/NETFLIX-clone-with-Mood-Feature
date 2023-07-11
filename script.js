@@ -345,12 +345,14 @@ function searchMovieTrailer(movieName, iframeId) {
       const randomResult = res.items[randomNumber(0, 4)];
       console.log("All good at Google YT API");
 
-      iFrameEle.src = `https://www.youtube.com/embed/${randomResult.id.videoId}?autoplay=1&mute=1&controls=0`;
+      iFrameEle.src = `https://www.youtube.com/embed/${randomResult.id.videoId}?rel=0&autoplay=1&mute=1&controls=0`;
 
       setTimeout(() => {
         iFrameEle.style.display = "flex";
+      }, 700);
+      setTimeout(() => {
         iFrameLoader.style.display = "none";
-      }, 900);
+      }, 1400);
     })
     .catch((err) => {
       iFrameLoader.style.display = "none";

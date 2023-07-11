@@ -255,10 +255,10 @@ iframe,
   transform: scale(1.1) translateY(-20px);
   border: 3px solid white;
 }
-iframe{
+iframe {
   z-index: 10;
 }
-.iframe-loader{
+.iframe-loader {
   z-index: 11;
 
   user-select: none;
@@ -376,17 +376,20 @@ hgroup > h2 {
     font-size: small;
   }
   .movies-rows {
-    height: 140px;
+    height: 160px;
   }
   .movies-rows > .movie > .movie-banner {
     width: 200px;
-    height: 100px;
+    height: 120px;
   }
-  iframe {
+  iframe,
+  .iframe-loader {
     width: 200px;
-    height: 100px;
-    animation: Popup 1s ease;
+    height: 120px;
     transform: scale(1.1) translateY(-10px);
+  }
+  .iframe-loader {
+    animation: Popup 0.5s ease-out;
   }
   @keyframes Popup {
     from {
