@@ -11,3 +11,8 @@
 > 5. Displaying Internet/Wifi connection status with the use of XMLHttpRequest().
 > 6. The banner changes every time the page loads.
 > 7. It has Top Trending movies on top of the movies list.
+> 8. On hover of each movie, the title gets animated from bottom to top below each movie banner.
+> 9. On Mousedown one movie it animated skew(0.9) and comes back to when MouseUp  skew(1).
+> 10. On clicking on one movie Google API for YT videos is called.
+> 11. It displays and plays the YT video exactly on the movie banner.
+> 12. After moving MouseOut from the YT video. It disappears.
