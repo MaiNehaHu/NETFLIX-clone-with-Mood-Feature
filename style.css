@@ -266,13 +266,13 @@ iframe{
   align-items: center;
   justify-content: center;
   background-color: black;
-  animation: Expand 1.5s ease-out 0s;
+  animation: Expand 0.5s ease-out 0s;
 }
 .iframe-loader::after {
   content: "";
   width: 30px;
   height: 30px;
-  border: 10px solid pink;
+  border: 10px double pink;
   border-top-color: purple;
   border-radius: 50%;
   animation: loading 1.5s ease infinite;

@@ -3,7 +3,7 @@ const apiKey = "89baa223d65eb626c13d7431f219368d";
 const apiEndPoint = "https://api.themoviedb.org/3/";
 const imgPath = "https://image.tmdb.org/t/p/original";
 const ytEndPoint = `https://www.googleapis.com/youtube/v3/`;
-const YTGoogleAPI = `AIzaSyDX9KJ5YuUTHhUpKGwuxS-eM0I6guGWFjc`;
+const YTGoogleAPI = `AIzaSyDmpKaF1AcumagGRJcnHMATwwY_JU7MRlQ`;
 
 /**🌈 Mood selected status 🌈 */
 var selectedMood = false;
@@ -330,11 +330,11 @@ function searchMovieTrailer(movieName, iframeId) {
   const iFrameEle = document.getElementById(iframeId);
 
   /**Close if scrolling again on screen */
-  const Body = document.querySelector("body"); 
+  const Body = document.querySelector("body");
   Body.addEventListener("touchmove", () => CloseMovieiFrame(iFrameEle));
 
   /**Loader on iFrame */
-  const iFrameLoader = iFrameEle.nextElementSibling; 
+  const iFrameLoader = iFrameEle.nextElementSibling;
   iFrameLoader.style.display = "flex";
 
   if (!movieName) return;
@@ -346,9 +346,11 @@ function searchMovieTrailer(movieName, iframeId) {
       console.log("All good at Google YT API");
 
       iFrameEle.src = `https://www.youtube.com/embed/${randomResult.id.videoId}?autoplay=1&mute=1&controls=0`;
-      
-      iFrameEle.style.display = "flex";
-      iFrameLoader.style.display = "none";
+
+      setTimeout(() => {
+        iFrameEle.style.display = "flex";
+        iFrameLoader.style.display = "none";
+      }, 900);
     })
     .catch((err) => {
       iFrameLoader.style.display = "none";
