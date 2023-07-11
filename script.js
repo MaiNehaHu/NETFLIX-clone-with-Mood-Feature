@@ -545,8 +545,8 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-// window.addEventListener("contextmenu", (event) => {
-//   event.preventDefault();
+window.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
 
-//   alert("Can't console my dear friend 😜");
-// });
+  alert("Can't console my dear friend 😜");
+});
