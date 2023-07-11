@@ -120,6 +120,10 @@ nav {
   font-size: 5.2rem;
   text-transform: uppercase;
   cursor: default;
+  text-shadow: 0px 0px 15px black;
+}
+.banner-content > h2 {
+  text-shadow: 0px 0px 15px black;
 }
 .banner-content > p {
   font-size: 1.3rem;
@@ -237,6 +241,31 @@ nav {
   transition: transform 0.1s ease;
 }
 
+/* iframe loading */
+iframe {
+  position: absolute;
+  height: var(--height);
+  width: var(--widht);
+  margin: var(--margin);
+
+  border-radius: 1rem;
+  z-index: 10;
+  opacity: 1;
+
+  transform: scale(1.1) translateY(-20px);
+  border: 3px solid white;
+  animation: Expand 1.5s ease-out 0s;
+}
+@keyframes Expand {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.1) translateY(-20px);
+  }
+}
 /*Movie name*/
 aside {
   font-size: 0.6rem;
@@ -285,6 +314,10 @@ aside {
   }
 }
 
+.nothing {
+  width: 0;
+  height: 0;
+}
 /*header group with category name*/
 hgroup > h2 {
   padding: 1rem;
@@ -324,6 +357,22 @@ hgroup > h2 {
   .movies-rows > .movie > .movie-banner {
     width: 200px;
     height: 100px;
+  }
+  iframe {
+    width: 200px;
+    height: 100px;
+    animation: Popup 1s ease;
+    transform: scale(1.1) translateY(-10px);
+  }
+  @keyframes Popup {
+    from {
+      transform: scale(0) translateY(0px);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1.1) translateY(-10px);
+      opacity: 1;
+    }
   }
   aside {
     font-size: 0.4rem;

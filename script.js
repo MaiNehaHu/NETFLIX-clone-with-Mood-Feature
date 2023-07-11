@@ -2,6 +2,8 @@
 const apiKey = "89baa223d65eb626c13d7431f219368d";
 const apiEndPoint = "https://api.themoviedb.org/3/";
 const imgPath = "https://image.tmdb.org/t/p/original";
+const ytEndPoint = `https://www.googleapis.com/youtube/v3/`;
+const YTGoogleAPI = `AIzaSyDX9KJ5YuUTHhUpKGwuxS-eM0I6guGWFjc`;
 
 /**🌈 Mood selected status 🌈 */
 var selectedMood = false;
@@ -100,6 +102,8 @@ const apiPaths = {
   fetchMoviesList: (id) =>
     `${apiEndPoint}/discover/movie?api_key=${apiKey}&with_genres=${id}`,
   fetchTrending: `${apiEndPoint}trending/all/week?api_key=${apiKey}&language=en-US`,
+  searchOnYoutube: (query) =>
+    `${ytEndPoint}search?part=snippet&q=${query}&key=${YTGoogleAPI}`,
 };
 
 window.addEventListener("load", function () {
@@ -249,20 +253,29 @@ function buildMoviesHtml(list, categoryName) {
   const movieListHTML = list
     //Building one section of one category
     .map((item) => {
-      if (!item.title || !item.backdrop_path) return;
+      if (!item.title || !item.backdrop_path)
+        return `<div class="nothing"></div>`;
       else {
         return `
-      <div class="movie">
-        <img class="movie-banner"
-        src="${imgPath}${item.backdrop_path}"
-        alt="${item.title}"
-        onmousedown="animateDown(this)"
-        onmouseup="animateUp(this); "
-        />
-        <aside>
-          <h1>${item.title}</h1>
-        </aside>
-      </div>
+        <div class="movie">
+          <img class="movie-banner"
+          src="${imgPath}${item.backdrop_path}"
+              alt="${item.title}"
+              onmousedown="animateDown(this)"
+              onmouseup="animateUp(this); searchMovieTrailer('${item.title}','${categoryName}${item.id}')"
+          />
+          <aside>
+            <h1>${item.title}</h1>
+          </aside>
+          <iframe style="display:none;" 
+            onmouseleave="CloseMovieiFrame(this)" 
+            src="" 
+            id="${categoryName}${item.id}" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media;">
+          </iframe>
+        </div>
     `; //one movie returned in movie list
       }
     })
@@ -271,7 +284,7 @@ function buildMoviesHtml(list, categoryName) {
   const movieSectionHTML =
     //Making all movies sections
     ` <hgroup>
-      <h2>${categoryName}</h2>
+      <h2>${categoryName}</h2> &rightarrowtail;
     </hgroup>
     <div class="movies-rows scrollerBox snaps-inline">
       ${movieListHTML}
@@ -288,7 +301,7 @@ function buildMoodMoviesHTML(list, moodName) {
     console.log(
       `${randomMovie_fromList.title} of ${moodName} Banner Doesn't exist`
     );
-    return;
+    return `<div class="nothing"></div>`;
   } else {
     const movieListHTML = `
     <img
@@ -309,6 +322,35 @@ function buildMoodMoviesHTML(list, moodName) {
   }
 }
 
+//YT video as trailer or teaser or review
+function searchMovieTrailer(movieName, iframeId) {
+  console.log(`Clicked on ${movieName}, ${iframeId}`);
+
+  if (!movieName) return;
+
+  fetch(apiPaths.searchOnYoutube(movieName))
+    .then((res) => res.json())
+    .then((res) => {
+      const bestResult = res.items[randomNumber(0, 4)];
+
+      const iFrameEle = document.getElementById(iframeId);
+
+      iFrameEle.src = `https://www.youtube.com/embed/${bestResult.id.videoId}?autoplay=1&mute=1&controls=0`;
+      iFrameEle.style.display = "flex";
+    })
+    .catch((err) => {
+      alert("Facing Problem in getting video");
+      console.log("Not getting data from Google API : ", err);
+    });
+}
+
+/**Remove on mouse out */
+function CloseMovieiFrame(movieName) {
+  console.log("mouse out");
+  movieName.style.display = "none";
+}
+
+/**Animate Push and Jump back of Banner*/
 function animateDown(image) {
   image.style.transform = "scale(0.91)";
 }
@@ -500,8 +542,8 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-window.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
+// window.addEventListener("contextmenu", (event) => {
+//   event.preventDefault();
 
-  alert("can't console mydear frined 😜");
-});
+//   alert("Can't console my dear friend 😜");
+// });
