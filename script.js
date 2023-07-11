@@ -3,7 +3,7 @@ const apiKey = "89baa223d65eb626c13d7431f219368d";
 const apiEndPoint = "https://api.themoviedb.org/3/";
 const imgPath = "https://image.tmdb.org/t/p/original";
 const ytEndPoint = `https://www.googleapis.com/youtube/v3/`;
-const YTGoogleAPI = `AIzaSyC0SZJkHFX-fQ7NrsxdI4l4mGwYuY4l7P8`;
+const YTGoogleAPI = `AIzaSyDAzGpoRKoHBfjXltxus9tV-J8OxJTPqNo`;
 
 /**🌈 Mood selected status 🌈 */
 var selectedMood = false;
