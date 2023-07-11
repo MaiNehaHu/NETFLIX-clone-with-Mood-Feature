@@ -381,6 +381,8 @@ hgroup > h2 {
   .movies-rows > .movie > .movie-banner {
     width: 200px;
     height: 120px;
+    object-fit: cover;
+    object-position: center;
   }
   iframe,
   .iframe-loader {
