@@ -3,7 +3,7 @@ const apiKey = "89baa223d65eb626c13d7431f219368d";
 const apiEndPoint = "https://api.themoviedb.org/3/";
 const imgPath = "https://image.tmdb.org/t/p/original";
 const ytEndPoint = `https://www.googleapis.com/youtube/v3/`;
-const YTGoogleAPI = `AIzaSyDmpKaF1AcumagGRJcnHMATwwY_JU7MRlQ`;
+const YTGoogleAPI = `AIzaSyC0SZJkHFX-fQ7NrsxdI4l4mGwYuY4l7P8`;
 
 /**🌈 Mood selected status 🌈 */
 var selectedMood = false;
@@ -348,6 +348,8 @@ function searchMovieTrailer(movieName, iframeId) {
   fetch(apiPaths.searchOnYoutube(movieName))
     .then((res) => res.json())
     .then((res) => {
+      console.log(res.items || res.error.errors[0]);
+
       const randomResult = res.items[randomNumber(0, 4)];
       console.log("All good at Google YT API");
 
@@ -360,10 +362,9 @@ function searchMovieTrailer(movieName, iframeId) {
         iFrameLoader.style.display = "none";
       }, 1400);
     })
-    .catch((err) => {
+    .catch(() => {
       iFrameLoader.style.display = "none";
       alert("Facing Problem in getting video");
-      console.log("Not getting data from Google API : ", err);
     });
 }
 
@@ -400,7 +401,7 @@ function MoodOptions() {
   setTimeout(() => {
     console.log("Select mood");
     Mood.style.display = "flex";
-  }, 20000);
+  }, 30000);
 }
 
 /**happy filter*/
@@ -576,6 +577,4 @@ removeMoodResult.addEventListener("click", () => {
 
 window.addEventListener("contextmenu", (event) => {
   event.preventDefault();
-
-  alert("Can't console my dear friend 😜");
 });
