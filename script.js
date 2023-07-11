@@ -396,6 +396,7 @@ actionMood.addEventListener("click", filterAction);
 /**Family */
 familyMood.addEventListener("click", filterFamily);
 
+//😁
 function filterHappy() {
   fetch(apiPaths.fetchAllCategories)
     .then((response) => response.json())
@@ -415,12 +416,13 @@ function filterHappy() {
           movieName.name == "Science Fiction";
         return flag;
       });
-      console.log("Happy mood", happyMovies);
+      console.log("Happy mood 😁", happyMovies);
       MoodSelected(happyMovies);
     })
     .catch((err) => console.log(err));
 }
 
+//🥰
 function filterRomance() {
   // console.log(allMovies);
   fetch(apiPaths.fetchAllCategories)
@@ -437,12 +439,13 @@ function filterRomance() {
           movieName.name == "Animation";
         return flag;
       });
-      console.log("Romance mood", romanceMovies);
+      console.log("Romance mood 🥰", romanceMovies);
       MoodSelected(romanceMovies);
     })
     .catch((err) => console.log(err));
 }
 
+//😢
 function filterSad() {
   fetch(apiPaths.fetchAllCategories)
     .then((response) => response.json())
@@ -457,11 +460,13 @@ function filterSad() {
           movieName.name == "Comedy";
         return flag;
       });
-      console.log("sad mood", sadMovies);
+      console.log("sad mood 😢", sadMovies);
       MoodSelected(sadMovies);
     })
     .catch((err) => console.log(err));
 }
+
+//👻
 function filterHorror() {
   fetch(apiPaths.fetchAllCategories)
     .then((response) => response.json())
@@ -477,11 +482,13 @@ function filterHorror() {
 
         return flag;
       });
-      console.log("Horror mood", horrorMovies);
+      console.log("Horror mood 👻", horrorMovies);
       MoodSelected(horrorMovies);
     })
     .catch((err) => console.log(err));
 }
+
+//🤯
 function filterAction() {
   fetch(apiPaths.fetchAllCategories)
     .then((response) => response.json())
@@ -499,11 +506,13 @@ function filterAction() {
         return flag;
       });
 
-      console.log("Action mood", actionMovies);
+      console.log("Action mood 🤯", actionMovies);
       MoodSelected(actionMovies);
     })
     .catch((err) => console.log(err));
 }
+
+//👨‍👩‍👧‍👦
 function filterFamily() {
   fetch(apiPaths.fetchAllCategories)
     .then((response) => response.json())
@@ -525,7 +534,7 @@ function filterFamily() {
 
         return flag;
       });
-      console.log("Family mood", familyMovies);
+      console.log("Family mood 👨‍👩‍👧‍👦", familyMovies);
       MoodSelected(familyMovies);
     })
     .catch((err) => console.log(err));
