@@ -358,8 +358,8 @@ function searchMovieTrailer(movieName, iframeId) {
       }, 1400);
     })
     .catch((err) => {
-      iFrameLoader.style.display = "none";
-      alert("Facing Problem in getting video");
+      // iFrameLoader.style.display = "none";
+      // alert("Facing Problem in getting video");
       console.log("Not getting data from Google API : ", err);
     });
 }
