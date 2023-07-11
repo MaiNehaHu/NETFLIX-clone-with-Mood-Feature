@@ -275,7 +275,7 @@ function buildMoviesHtml(list, categoryName) {
             frameborder="0" 
             allow="autoplay; encrypted-media;">
           </iframe>
-          <div style="display: none" class="iframe-loader"></div>
+          <div style="display: none" onmouseleave="CloseMovieiFrame(this)" class="iframe-loader"></div>
         </div>
     `; //one movie returned in movie list
       }
@@ -327,15 +327,18 @@ function buildMoodMoviesHTML(list, moodName) {
 function searchMovieTrailer(movieName, iframeId) {
   console.log(`Clicked on ${movieName}, ${iframeId}`);
 
-  const iFrameEle = document.getElementById(iframeId);
-
-  /**Close if scrolling again on screen */
   const Body = document.querySelector("body");
-  Body.addEventListener("touchmove", () => CloseMovieiFrame(iFrameEle));
+  const iFrameEle = document.getElementById(iframeId);
+  const iFrameLoader = iFrameEle.nextElementSibling;
 
   /**Loader on iFrame */
-  const iFrameLoader = iFrameEle.nextElementSibling;
   iFrameLoader.style.display = "flex";
+
+  /**Close if scrolling again on screen */
+  Body.addEventListener("touchmove", () => {
+    CloseMovieiFrame(iFrameEle);
+    CloseMovieiFrame(iFrameLoader);
+  });
 
   if (!movieName) return;
 
@@ -568,8 +571,8 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-// window.addEventListener("contextmenu", (event) => {
-//   event.preventDefault();
+window.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
 
-//   alert("Can't console my dear friend 😜");
-// });
+  alert("Can't console my dear friend 😜");
+});
