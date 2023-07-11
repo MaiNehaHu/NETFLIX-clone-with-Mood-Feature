@@ -92,7 +92,7 @@ function offlineStatus() {
 function reLoad() {
   setInterval(() => {
     window.location.reload();
-  }, 7000);
+  }, 10000);
   return;
 }
 
@@ -275,6 +275,7 @@ function buildMoviesHtml(list, categoryName) {
             frameborder="0" 
             allow="autoplay; encrypted-media;">
           </iframe>
+          <div style="display: none" class="iframe-loader"></div>
         </div>
     `; //one movie returned in movie list
       }
@@ -326,22 +327,31 @@ function buildMoodMoviesHTML(list, moodName) {
 function searchMovieTrailer(movieName, iframeId) {
   console.log(`Clicked on ${movieName}, ${iframeId}`);
 
+  const iFrameEle = document.getElementById(iframeId);
+
+  /**Close if scrolling again on screen */
+  const Body = document.querySelector("body"); 
+  Body.addEventListener("touchmove", () => CloseMovieiFrame(iFrameEle));
+
+  /**Loader on iFrame */
+  const iFrameLoader = iFrameEle.nextElementSibling; 
+  iFrameLoader.style.display = "flex";
+
   if (!movieName) return;
 
   fetch(apiPaths.searchOnYoutube(movieName))
     .then((res) => res.json())
     .then((res) => {
+      const randomResult = res.items[randomNumber(0, 4)];
       console.log("All good at Google YT API");
-      const bestResult = res.items[randomNumber(0, 4)];
 
-      const iFrameEle = document.getElementById(iframeId);
-      const Body = document.querySelector("body");
-      Body.addEventListener("touchmove",()=> CloseMovieiFrame(iFrameEle));
+      iFrameEle.src = `https://www.youtube.com/embed/${randomResult.id.videoId}?autoplay=1&mute=1&controls=0`;
       
-      iFrameEle.src = `https://www.youtube.com/embed/${bestResult.id.videoId}?autoplay=1&mute=1&controls=0`;
       iFrameEle.style.display = "flex";
+      iFrameLoader.style.display = "none";
     })
     .catch((err) => {
+      iFrameLoader.style.display = "none";
       alert("Facing Problem in getting video");
       console.log("Not getting data from Google API : ", err);
     });
@@ -554,8 +564,8 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-window.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
+// window.addEventListener("contextmenu", (event) => {
+//   event.preventDefault();
 
-  alert("Can't console my dear friend 😜");
-});
+//   alert("Can't console my dear friend 😜");
+// });
