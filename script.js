@@ -331,10 +331,13 @@ function searchMovieTrailer(movieName, iframeId) {
   fetch(apiPaths.searchOnYoutube(movieName))
     .then((res) => res.json())
     .then((res) => {
+      console.log("All good at Google YT API");
       const bestResult = res.items[randomNumber(0, 4)];
 
       const iFrameEle = document.getElementById(iframeId);
-
+      const Body = document.querySelector("body");
+      Body.addEventListener("touchmove",()=> CloseMovieiFrame(iFrameEle));
+      
       iFrameEle.src = `https://www.youtube.com/embed/${bestResult.id.videoId}?autoplay=1&mute=1&controls=0`;
       iFrameEle.style.display = "flex";
     })
