@@ -56,7 +56,6 @@ window.onload = () => {
         onlineStatus();
 
         //reload contiously
-        loader.classList.add("loader--hidden");
 
         //remove loader and show mood options
         MoodOptions();
@@ -78,6 +77,7 @@ function onlineStatus() {
   offline.style.display = "none";
   online.style.display = "flex";
   setTimeout(() => {
+    loader.classList.add("loader--hidden");
     connectionStatus.style.display = "none";
     online.style.display = "none";
   }, 2000);
@@ -360,7 +360,7 @@ function searchMovieTrailer(movieName, iframeId) {
       }, 700);
       setTimeout(() => {
         iFrameLoader.style.display = "none";
-      }, 1400);
+      }, 3200);
     })
     .catch(() => {
       iFrameLoader.style.display = "none";
