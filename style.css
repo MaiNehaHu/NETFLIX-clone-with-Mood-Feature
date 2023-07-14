@@ -254,6 +254,7 @@ iframe,
 
   transform: scale(1.1) translateY(-20px);
   border: 3px solid white;
+  background-color: black;
 }
 iframe {
   z-index: 10;
@@ -265,7 +266,6 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
   animation: Expand 0.5s ease-out 0s;
 }
 .iframe-loader::after {
