@@ -275,10 +275,6 @@ function buildMoviesHtml(list, categoryName) {
             frameborder="0" 
             allow="autoplay; encrypted-media;">
           </iframe>
-          <div style="display: none" 
-            onmouseleave="CloseMovieiFrame(this)" 
-            class="iframe-loader">
-          </div>
         </div>
     `; //one movie returned in movie list
       }
@@ -332,10 +328,6 @@ function buildMoodMoviesHTML(list, moodName) {
           frameborder="0" 
           allow="autoplay; encrypted-media;">
         </iframe>
-        <div style="display: none" 
-          onmouseleave="CloseMovieiFrame(this)" 
-          class="mood-iframe-loader">
-        </div>
       </div>`;
     return moodMovieHTML;
   }
@@ -347,15 +339,10 @@ function searchMovieTrailer(movieName, iframeId) {
 
   const Body = document.querySelector("body");
   const iFrameEle = document.getElementById(iframeId);
-  const iFrameLoader = iFrameEle.nextElementSibling;
-
-  /**Loader on iFrame */
-  iFrameLoader.style.display = "flex";
 
   /**Close if scrolling again on screen */
   Body.addEventListener("touchmove", () => {
     CloseMovieiFrame(iFrameEle);
-    CloseMovieiFrame(iFrameLoader);
   });
 
   if (!movieName) return;
@@ -370,12 +357,7 @@ function searchMovieTrailer(movieName, iframeId) {
 
       iFrameEle.src = `https://www.youtube.com/embed/${randomResult.id.videoId}?rel=0&autoplay=1&mute=1&controls=0`;
 
-      setTimeout(() => {
-        iFrameEle.style.display = "flex";
-      }, 700);
-      setTimeout(() => {
-        iFrameLoader.style.display = "none";
-      }, 3200);
+      iFrameEle.style.display = "flex";
     })
     .catch(() => {
       iFrameLoader.style.display = "none";
@@ -386,6 +368,7 @@ function searchMovieTrailer(movieName, iframeId) {
 /**Remove on mouse out */
 function CloseMovieiFrame(movieName) {
   console.log("mouse out");
+  movieName.src = "";
   movieName.style.display = "none";
 }
 
@@ -592,6 +575,6 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-window.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
-});
+// window.addEventListener("contextmenu", (event) => {
+//   event.preventDefault();
+// });
