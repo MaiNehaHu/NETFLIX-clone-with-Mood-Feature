@@ -418,7 +418,7 @@ function MoodOptions() {
   setTimeout(() => {
     console.log("Select mood");
     Mood.style.display = "flex";
-  }, 1000);
+  }, 30000);
 }
 
 /**happy filter*/
