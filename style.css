@@ -234,6 +234,7 @@ nav {
 
   object-fit: cover;
   border-radius: 1rem;
+  background: linear-gradient(to right bottom, grey, #2c2c2c);
 }
 
 .movie-banner:hover {
@@ -600,7 +601,7 @@ hgroup > h2 {
   .remove {
     margin: 10px 20px 0px 0px;
   }
-  .mood-result-container{
+  .mood-result-container {
     padding: 10% 5%;
   }
 }
