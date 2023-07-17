@@ -592,6 +592,6 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-// window.addEventListener("contextmenu", (event) => {
-//   event.preventDefault();
-// });
+window.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+});
