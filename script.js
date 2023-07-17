@@ -259,10 +259,10 @@ function buildMoviesHtml(list, categoryName) {
         return `
         <div class="movie">
           <img class="movie-banner"
-          src="${imgPath}${item.backdrop_path}"
-              alt="${item.title}"
-              onmousedown="animateDown(this)"
-              onmouseup="animateUp(this); searchMovieTrailer('${item.title}','${categoryName}${item.id}')"
+            src="${imgPath}${item.backdrop_path}"
+            alt="${item.title}"
+            onmousedown="animateDown(this)"
+            onmouseup="animateUp(this); searchMovieTrailer('${item.title}','${categoryName}${item.id}')"
           />
           <aside>
             <h1>${item.title}</h1>
@@ -318,10 +318,25 @@ function buildMoodMoviesHTML(list, moodName) {
 
     const moodMovieHTML =
       //Making movies sections
-      `<div class="mood-result-details">
-      ${movieListHTML}
-      <h3>${randomMovie_fromList.title}</h3>
-    </div>`;
+      `<div class="mood-result-details"
+        onmousedown="animateDown(this)" 
+        onmouseup="animateUp(this); searchMovieTrailer('${randomMovie_fromList.title}','Mood=${moodName}${randomMovie_fromList.id}')"
+      >
+        ${movieListHTML}
+        <h3>${randomMovie_fromList.title}</h3>
+        <iframe style="display: none;" 
+          onmouseleave="CloseMovieiFrame(this)" 
+          src="" 
+          id="Mood=${moodName}${randomMovie_fromList.id}" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="autoplay; encrypted-media;">
+        </iframe>
+        <div style="display: none" 
+          onmouseleave="CloseMovieiFrame(this)" 
+          class="mood-iframe-loader">
+        </div>
+      </div>`;
     return moodMovieHTML;
   }
 }
@@ -377,9 +392,11 @@ function CloseMovieiFrame(movieName) {
 /**Animate Push and Jump back of Banner*/
 function animateDown(image) {
   image.style.transform = "scale(0.91)";
+  image.style.transition = "transform 0.1s ease";
 }
 function animateUp(image) {
   image.style.transform = "scale(1)";
+  image.style.transition = "transform 0.1s ease";
 }
 
 /*---------------mood result display on screen-------------*/
@@ -401,7 +418,7 @@ function MoodOptions() {
   setTimeout(() => {
     console.log("Select mood");
     Mood.style.display = "flex";
-  }, 30000);
+  }, 1000);
 }
 
 /**happy filter*/
@@ -575,6 +592,6 @@ removeMoodResult.addEventListener("click", () => {
 
 /**------------------last------------------------*/
 
-window.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
-});
+// window.addEventListener("contextmenu", (event) => {
+//   event.preventDefault();
+// });

@@ -219,6 +219,8 @@ nav {
   flex-direction: column;
 
   position: relative;
+}
+:root {
   --height: 150px;
   --widht: 300px;
   --margin: 0 30px;
@@ -244,7 +246,8 @@ nav {
 
 /* iframe loading */
 iframe,
-.iframe-loader {
+.iframe-loader,
+.mood-iframe-loader {
   position: absolute;
   height: var(--height);
   width: var(--widht);
@@ -260,7 +263,8 @@ iframe,
 iframe {
   z-index: 10;
 }
-.iframe-loader {
+.iframe-loader,
+.mood-iframe-loader {
   z-index: 11;
 
   user-select: none;
@@ -269,7 +273,8 @@ iframe {
   justify-content: center;
   animation: Expand 0.5s ease-out 0s;
 }
-.iframe-loader::after {
+.iframe-loader::after,
+.mood-iframe-loader::after {
   content: "";
   width: 30px;
   height: 30px;
@@ -566,18 +571,14 @@ hgroup > h2 {
   align-items: center;
 }
 .mood-result-details > img {
-  height: 200px;
-  width: 300px;
+  width: var(--widht);
+  height: var(--height);
+
   object-fit: cover;
   border-radius: 1rem;
   animation: Scale 1s ease-out;
-}
-.mood-result-details img:hover {
+  background: linear-gradient(to right bottom, grey, #2c2c2c);
   cursor: pointer;
-  transform: scale(1.1) translateY(-6%);
-
-  border: 1px solid white;
-  transition: all 0.5s ease-out;
 }
 
 .mood-result-details > h3 {
