@@ -1,6 +1,6 @@
 # NETFLIX-Clone-with-Mood-Feature
 
-## link : https://mainehahu.github.io/NETFLIX-Clone-with-Mood-Feature/
+## link : https://mainehahu.github.io/NETFLIX-clone-with-Mood-Feature/
 
 
 > 0. Designed a mood options feature.
